@@ -5,6 +5,8 @@ module.exports = {
     async create(request, response) {
         const { type, title, description } = request.body
 
+        console.log(request.body)
+
         if (!type || !title) {
             return response.status(400).json({
                 error: "Dados incompletos."
@@ -30,13 +32,22 @@ module.exports = {
 
         const { id } = request.params
         const { description, title } = request.body
-
         const propertie = await Properties.findOne({ _id: id })
 
-        if (description || title) {
-            propertie.title = title ? title : propertie.title
-            propertie.description = description ? description : propertie.description
-            await propertie.save()
+        if (!propertie) {
+            return response.status(401).json({
+                error: "Imóvel não encontrado"
+            })
+        } else {
+            if (description || title) {
+                propertie.title = title ? title : propertie.title
+                propertie.description = description ? description : propertie.description
+                await propertie.save()
+            } else {
+                return response.status(400).json({
+                    error: "Dados incompletos."
+                })
+            }
         }
 
         return response.json(propertie)
