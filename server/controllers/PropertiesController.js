@@ -5,8 +5,6 @@ module.exports = {
     async create(request, response) {
         const { type, title, description } = request.body
 
-        console.log(request.body)
-
         if (!type || !title) {
             return response.status(400).json({
                 error: "Dados incompletos."
