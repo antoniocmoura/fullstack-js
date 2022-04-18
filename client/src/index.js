@@ -1,9 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import { RecoilRoot } from 'recoil'
+import App from './App'
 
 ReactDOM.render(
-  <App />,
+  <React.StrictMode>
+    <RecoilRoot>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <App />
+      </React.Suspense>
+    </RecoilRoot>
+  </React.StrictMode>,
   document.getElementById('root')
 );
+

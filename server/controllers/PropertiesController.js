@@ -11,13 +11,13 @@ module.exports = {
             })
         }
 
-        const propertiesCreated = await Properties.create({
+        const propertieCreated = await Properties.create({
             type,
             title,
             description
         })
 
-        return response.json(propertiesCreated)
+        return response.json(propertieCreated)
 
     },
 
@@ -29,7 +29,7 @@ module.exports = {
     async update(request, response) {
 
         const { id } = request.params
-        const { description, title } = request.body
+        const { type, title, description } = request.body
         const propertie = await Properties.findOne({ _id: id })
 
         if (!propertie) {
@@ -37,7 +37,8 @@ module.exports = {
                 error: "Imóvel não encontrado"
             })
         } else {
-            if (description || title) {
+            if (type || title || description) {
+                propertie.type = type ? type : propertie.type
                 propertie.title = title ? title : propertie.title
                 propertie.description = description ? description : propertie.description
                 await propertie.save()

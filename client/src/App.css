@@ -1,24 +1,56 @@
-.App {
-  text-align: center;
+
+.content {
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: row;
+}
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.list {
+  display: flex;
+  flex-direction: column;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.propertie {
+  display: flex;
+  flex-direction: row;
 }
 
-.App-intro {
-  font-size: large;
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  width: 25rem;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+button {
+  background-color: #c0c0c0;
+  border: 1px solid #d0d0d0;
+  border-radius: .4rem;
+  margin: .5rem .25rem;
+  padding: .5rem;
+  width: 100px;
+  font-size: .85rem;
+  font-weight: bold;
+  color: #fff;
 }
+
+button:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
+.btn-edit {
+  background-color: #249eeb;
+}
+
+.btn-delete {
+  background-color: #ec243b;
+}
+
+
